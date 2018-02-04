@@ -1,0 +1,46 @@
+#titulo
+{
+	color: white;
+	font-size: 75px;
+	font-family: arial;
+	background-color:darkcyan;
+	opacity: 50%;
+	margin-bottom: 250px;
+	left: 0px;
+	right: 0px;
+	position: absolute;
+}
+
+article
+{
+	padding-top: 100px;
+	text-align: center;
+	color: cadetblue;
+	font-family: arial;
+	font-size: 60px;     
+}
+small
+{
+    text-align: center;
+    font-size: 20px;
+    color: dimgray;
+    font-family: arial;
+}
+#galeria
+{
+    display: inline;
+    width: 80%;
+    margin: 20px;
+    padding-left: 3pX;
+}
+footer
+{
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: darkcyan;
+	padding:50px; 
+	color: white;
+	font-family: arial;
+	font-size: 10px;
+}
