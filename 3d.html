@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3D</title>
+	<script type="text/javascript" src="Rcolor.js"></script>
+</head>
+<body>
+<style type="text/css">
+	canvas
+	{
+		border: 2px solid black;
+		background-color: black;
+	}
+
+	</style>
+<center><canvas id="game" width="600" height="400"></canvas></center>
+<script>
+/////////////////////////////////////////////////////
+//              variables del programa
+////////////////////////////////////////////////////
+var c = null;
+var ctx = null;
+var fps = 60;
+var cdb = 10;
+var lista = [];
+
+
+for(i = 0; i < cdb; i++)
+{
+var px = Math.floor((Math.random()*600)+1);
+var py = Math.floor((Math.random()*400)+1);
+var vel = Math.floor((Math.random()*6)+1);
+var bot = new explorador(3,3,px,py,vel);
+lista.push(bot);
+}
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+//              funciones del juego
+////////////////////////////////////////////////////
+window.onload = function()
+{
+c = document.getElementById('game');
+ctx = c.getContext("2d");
+main();
+}
+
+function main()
+{setInterval(function(){update();},fps);}
+
+function update()
+{
+//ctx.clearRect(0,0,600,400);
+for(i = 0; i < lista.length; i++)
+{
+	lista[i].dibujar();
+}
+for(i = 0; i < lista.length; i++)
+{
+	lista[i].caminar1();
+}
+}
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+//            Objetos del juego
+////////////////////////////////////////////////////
+
+function explorador(tx,ty,px,py,vel)
+{
+ this.tx = tx;
+ this.ty = ty;
+ this.px = px;
+ this.py = py;
+ this.vel = vel;
+ this.color = randomColor();
+}
+
+explorador.prototype.dibujar = function()
+{
+ctx.beginPath();
+ctx.fillStyle = this.color;
+ctx.rect(this.px,this.py,this.tx,this.ty);
+ctx.fill();
+}
+
+
+
+explorador.prototype.caminar1 = function()
+{
+	var d = Math.floor((Math.random()*4)+1);
+	if(d == 1)
+	{this.px += this.vel;}
+	else if(d == 2)
+	{this.px -= this.vel;}
+	else if(d == 3)
+	{this.py -= this.vel;}
+	else if(d == 4)
+	{this.py += this.vel;}
+
+
+if(this.px > 600)
+{this.px = 1;}
+else if(this.px < 0)
+{this.px = 599;}
+
+if(this.py > 400)
+{this.py = 1;}
+else if(this.py < 0)
+{this.py = 399;}
+}
+
+
+
+explorador.prototype.caminar2 = function()
+{
+	//var vel = Math.floor((Math.random()*6)+1);
+	var d = Math.floor((Math.random()*8)+1);
+	if(d == 1)
+	{
+		this.py -= this.vel;
+	}
+	else if(d == 2)
+	{
+		this.py -= this.vel;
+		this.px += this.vel;
+	}
+	else if(d == 3)
+	{
+		this.px += this.vel;
+	}
+	else if(d == 4)
+	{
+		this.py += this.vel;
+		this.xp += this.vel;
+	}
+	else if(d == 5)
+	{
+		this.py += this.vel;
+	}
+	else if(d == 6)
+	{
+		this.px -= this.vel;
+		this.py += this.vel;
+	}
+	else if(d == 7)
+	{
+		this.px -= this.vel;
+	}
+	else if(d == 8)
+	{
+		this.py -= this.vel;
+		this.px -= this.vel;
+	}
+
+
+
+if(this.px > 600)
+{this.px = 1;}
+else if(this.px < 0)
+{this.px = 599;}
+
+if(this.py > 400)
+{this.py = 1;}
+else if(this.py < 0)
+{this.py = 399;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
